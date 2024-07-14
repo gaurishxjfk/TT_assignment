@@ -16,22 +16,19 @@ const calculatePosition = (
     return isDragging
       ? {
           transform: "translate(-50vh, 0) rotate(-10deg)",
+          // if (divRef.current) {
+          //   divRef.current.style.transform = `translateX(${newPosX}px)  ${ newPosX > 0 ? 'rotate(10deg)' : 'rotate(-10deg)'}`;
+          // }
         }
       : {
           transform: "translate(0, 0)",
         };
-  } else if (index !== (currentIndex + 1) % totalItems && index !== (currentIndex - 1 + totalItems) % totalItems) {
-    return {transform: "scale(0)",
-      zIndex: 0,};
-  } 
-  // else if (index === (currentIndex - 1 + totalItems) % totalItems) {
-  //   return {};
-  // } else {
-  //   return {
-  //     transform: "scale(0)",
-  //     zIndex: 0,
-  //   };
-  // }
+  } else if (
+    index !== (currentIndex + 1) % totalItems &&
+    index !== (currentIndex - 1 + totalItems) % totalItems
+  ) {
+    return { transform: "scale(0)", zIndex: 0 };
+  }
 };
 
 const ProductSlider = () => {
@@ -51,6 +48,7 @@ const ProductSlider = () => {
     e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
   ) => {
     const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    console.log(clientX)
     setDragStart(clientX);
     setIsDragging(true);
   };
@@ -85,12 +83,12 @@ const ProductSlider = () => {
           <div
             key={i.id}
             ref={slideRef}
-            className={`absolute cursor-pointer ${
+            className={`absolute cursor-grab z-10 ${
               index === (currentIndex + 1) % totalItems
-                ? "translate-x-[40vh] md:translate-x-[60vh] lg:translate-x-[80vh] rotate-[10deg] duration-500"
+                ? "translate-x-[35vh] sm:translate-x-[35vh] md:translate-x-[60vh] lg:translate-x-[80vh] rotate-[10deg] duration-500"
                 : index === (currentIndex - 1 + totalItems) % totalItems
-                ? "-translate-x-[40vh] md:-translate-x-[60vh] lg:-translate-x-[80vh] -rotate-[10deg] duration-700"
-                : "-mt-12 duration-500 transition-all"
+                ? "-translate-x-[35vh] sm:-translate-x-[35vh] md:-translate-x-[60vh] lg:-translate-x-[80vh] -rotate-[10deg] duration-700"
+                : "-mt-12 duration-500 z-20 transition-all"
             }`}
             onMouseDown={handleDragStart}
             onMouseMove={handleDragMove}
@@ -124,7 +122,7 @@ const ProductSliderCard: React.FC<ProductSliderItems> = ({
         alt={title}
         width={230}
         height={330}
-        className="w-[220px] h-[330px] md:w-[330px] md:h-[520px] lg:w-[430px] lg:h-[620px]"
+        className="w-[180px] h-[290px] sm:w-[220px] sm:h-[330px] md:w-[330px] md:h-[520px] lg:w-[430px] lg:h-[620px]"
       />
       <div
         className={`mt-12 ${

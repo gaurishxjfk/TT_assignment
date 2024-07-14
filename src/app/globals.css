@@ -16,3 +16,126 @@
 .reveal-animation {
   animation: revealTopToDown 0.7s ease-in-out forwards;
 }
+
+.image-enter {
+  opacity: 0.4;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.image-enter-active {
+  opacity: 1;
+}
+/* -------------------------------- */
+
+@keyframes splitUp {
+  0% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  50% {
+    clip-path: inset(5% 0 5% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-split {
+  animation: splitUp 1s forwards;
+}
+
+/* -------------------------------- */
+
+@keyframes topBorderFill {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@keyframes rightBorderFill {
+  0% {
+    height: 0;
+    top: 0;
+  }
+  100% {
+    height: 100%;
+    top: 0;
+  }
+}
+
+@keyframes bottomBorderFill {
+  0% {
+    width: 0;
+    right: 0;
+  }
+  100% {
+    width: 100%;
+    right: 0;
+  }
+}
+
+@keyframes leftBorderFill {
+  0% {
+    height: 0;
+    bottom: 0;
+  }
+  100% {
+    height: 100%;
+    bottom: 0;
+  }
+}
+
+.timer-border {
+  position: relative;
+  border: 0px solid transparent; /* Initial transparent border */
+}
+
+.timer-border-remove {
+  position: relative;
+  border: 0px solid transparent; /* Initial transparent border */
+}
+
+.timer-border::before,
+.timer-border::after,
+.timer-border .right,
+.timer-border .left {
+  content: "";
+  position: absolute;
+  background-color: white;
+}
+
+.timer-border::before {
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0; /* Start with zero width */
+  animation: topBorderFill 0.7s linear forwards;
+}
+
+.timer-border .right {
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 0; /* Start with zero height */
+  animation: rightBorderFill 0.7s linear 0.7s forwards;
+}
+
+.timer-border::after {
+  bottom: 0;
+  right: 0;
+  height: 4px;
+  width: 0; /* Start with zero width */
+  animation: bottomBorderFill 0.7s linear 1.4s forwards;
+}
+
+.timer-border .left {
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  height: 0; /* Start with zero height */
+  animation: leftBorderFill 0.5s linear 2.2s forwards;
+}
