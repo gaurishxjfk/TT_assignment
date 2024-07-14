@@ -85,9 +85,9 @@ const ProductSlider = () => {
             ref={slideRef}
             className={`absolute cursor-grab z-10 ${
               index === (currentIndex + 1) % totalItems
-                ? "translate-x-[35vh] sm:translate-x-[35vh] md:translate-x-[60vh] lg:translate-x-[80vh] rotate-[10deg] duration-500"
+                ? "translate-x-[28vh] sm:translate-x-[35vh] md:translate-x-[60vh] lg:translate-x-[80vh] rotate-[10deg] duration-500"
                 : index === (currentIndex - 1 + totalItems) % totalItems
-                ? "-translate-x-[35vh] sm:-translate-x-[35vh] md:-translate-x-[60vh] lg:-translate-x-[80vh] -rotate-[10deg] duration-700"
+                ? "-translate-x-[28vh] sm:-translate-x-[35vh] md:-translate-x-[60vh] lg:-translate-x-[80vh] -rotate-[10deg] duration-700"
                 : "-mt-12 duration-500 z-20 transition-all"
             }`}
             onMouseDown={handleDragStart}
@@ -116,13 +116,13 @@ const ProductSliderCard: React.FC<ProductSliderItems> = ({
   isCurrentIndex,
 }) => {
   return (
-    <div className="text-center h-[60vh]">
+    <div className="text-center flex flex-col items-center">
       <Image
         src={`/product_${id}.png`}
         alt={title}
         width={230}
         height={330}
-        className="w-[180px] h-[290px] sm:w-[220px] sm:h-[330px] md:w-[330px] md:h-[520px] lg:w-[430px] lg:h-[620px]"
+        className="object-cover w-[180px] h-[290px] sm:w-[220px] sm:h-[330px] md:w-[330px] md:h-[520px] lg:w-[430px] lg:h-[620px] "
       />
       <div
         className={`mt-12 ${

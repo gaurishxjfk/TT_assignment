@@ -11,14 +11,14 @@ const Navbar = () => {
     <nav className="fixed z-50 inset-x-0  flex flex-row-reverse md:flex-row items-center justify-between bg-white text-black py-6 px-6 lg:px-12 md:m-6 text-[14px]">
       <>
         <ul
-          className={`absolute md:relative flex-col md:flex-row justify-between md:w-2/3 lg:w-1/3 top-[5rem] md:top-0 right-0 bg-white px-6 md:p-0 transition-all duration-100 ${
+          className={`absolute md:relative flex-col md:flex-row justify-between w-1/2 md:w-2/3 lg:w-1/3 top-[5rem] md:top-0 right-0 bg-white px-6 py-3 md:p-0 transition-all duration-100 ${
             toggleOpen ? "flex reveal-animation" : "hidden md:flex"
           }`}
         >
           {menuItems.map((i) => (
             <li
               key={i.id}
-              className="hover:underline cursor-pointer py-2 md:py-0"
+              className="hover:underline cursor-pointer py-4 md:py-0"
             >
               {i.title}
             </li>

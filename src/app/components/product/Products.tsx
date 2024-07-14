@@ -34,7 +34,6 @@ const Products = () => {
     };
   }, []);
 
-  console.log(inView)
   return (
     <section>
       <div
